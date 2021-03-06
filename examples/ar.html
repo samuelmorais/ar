@@ -79,7 +79,7 @@
 						}
 
 					} );
-
+					object.scale.set(defaultScale,defaultScale,defaultScale);
 					object3D.attach( object );
 
 				} );
@@ -91,6 +91,7 @@
 
 					if ( reticle.visible ) {
 						object3D.position.setFromMatrixPosition(reticle.matrix);
+						object3D.visible = true;
 					}
 
 				}
