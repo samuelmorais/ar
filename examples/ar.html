@@ -63,6 +63,7 @@
 		    const defaultScale = 1/100;
 		    object3D.scale.set(defaultScale,defaultScale,defaultScale);
 		    object3D.layers.set(1);
+				object3D.visible = false;
 				scene.add(object3D);
 				//
 				// model
@@ -92,6 +93,7 @@
 					if ( reticle.visible ) {
 						object3D.position.setFromMatrixPosition(reticle.matrix);
 						object3D.visible = true;
+						reticle.visible = false;
 					}
 
 				}
