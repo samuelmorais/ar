@@ -59,35 +59,38 @@
 				      };
 				document.body.appendChild( ARButton.createButton( renderer, xrOptions ) );
 
+				const object3D = new THREE.Object3D();
+		    const defaultScale = 1/100;
+		    object3D.scale.set(defaultScale,defaultScale,defaultScale);
+		    object3D.layers.set(1);
+				scene.add(object3D);
 				//
+				// model
+				const loader = new FBXLoader();
+				loader.load( 'models/bubble_unified.fbx', function ( object ) {
+
+					object.traverse( function ( child ) {
+
+						if ( child.isMesh ) {
+
+							child.castShadow = true;
+							child.receiveShadow = true;
+
+						}
+
+					} );
+
+					object3D.attach( object );
+
+				} );
+
 
 				const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
 
 				function onSelect() {
 
 					if ( reticle.visible ) {
-
-						
-
-						// model
-						const loader = new FBXLoader();
-						loader.load( 'models/bubble_unified.fbx', function ( object ) {
-
-							object.traverse( function ( child ) {
-
-								if ( child.isMesh ) {
-
-									child.castShadow = true;
-									child.receiveShadow = true;
-
-								}
-
-							} );
-
-							scene.add( object );
-
-						} );
-
+						object3D.position.setFromMatrixPosition(reticle.matrix);
 					}
 
 				}
