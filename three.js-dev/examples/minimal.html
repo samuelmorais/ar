@@ -113,7 +113,7 @@
         transform: translate(16px,20.960000px);
     } 
 }
-
+/*
 #xd_marker1_2_tr {
     animation: xd_marker1_2_tr__tr 3000ms linear 1 normal forwards;
 }
@@ -162,7 +162,7 @@
         fill: rgb(60,65,85);
     } 
 
-}
+}*/
 
 
 
@@ -212,17 +212,7 @@ function renderPageMarkerOnEnter(pageNumber) {
         ()=>{document.getElementById('xd_marker1_1').style.display = 'block';}
         , 500
         
-    );
-    transitionPageAfterInterval(pageNumber);                
-}
-
-
-
-function transitionPageAfterInterval(pageNumber){
-    window.setTimeout(function(){
-        if(document.getElementById('xd_marker_idle' + (pageNumber-1) +'_1') != null) document.getElementById('xd_marker_idle' + (pageNumber-1) +'_1').style.display = 'none';
-        if(document.getElementById('xd_deactivate_marker' + (pageNumber -1) + '_1') != null)document.getElementById('xd_deactivate_marker' + (pageNumber-1) + '_1').style.display = 'block';                    
-    }, animationInterval);
+    );        
 }
 
 
